@@ -47,9 +47,11 @@ export default async function PostPage({
     <>
       <PageWrapper className={`pt-16`}>
         <div className={`p-10`}>
-          <div className={`flex`}>
+          <div
+            className={`flex flex-col items-end justify-center pb-2 md:flex-row md:items-center md:justify-start`}
+          >
             {user?.name && (
-              <div className={`px-6  pt-2`}>
+              <div className={`pb-2 pt-2 md:px-6  md:pb-0`}>
                 <Link href={`/profile/${user.id}`}>
                   <Avatar>
                     {user.image ? (
@@ -100,7 +102,7 @@ export default async function PostPage({
                 <>
                   <div
                     key={answer.id}
-                    className={`mb-2 mt-6 flex items-center justify-start`}
+                    className={`mb-2 mt-6 flex flex-col items-start justify-center md:flex-row md:items-center md:justify-start`}
                   >
                     {answer.authorId !== null && (
                       <AnsAuthor authorId={answer.authorId} />

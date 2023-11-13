@@ -6,6 +6,7 @@ import React from "react";
 import { Button } from "~/components/ui/button";
 import SignoutButton from "~/components/signout-button";
 import ContactButton from "~/app/profile/[id]/contact-button";
+import EditProfileButton from "~/app/profile/[id]/edit-profile-button";
 
 export default async function ProfilePage({
   params: { id },
@@ -52,7 +53,7 @@ export default async function ProfilePage({
           </div>
         </div>
         {session?.user.id === id ? (
-          <Button className={`mt-4 w-full`}>Edit Profile</Button>
+          <EditProfileButton />
         ) : (
           <ContactButton email={user.email} />
         )}

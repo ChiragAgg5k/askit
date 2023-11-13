@@ -10,11 +10,11 @@ export default function AnsAuthor({ authorId }: { authorId: string }) {
   const user = api.user.fetch.useQuery({ id: authorId });
 
   if (user.isLoading || !user.data) {
-    return <Icons.spinner />;
+    return <Icons.spinner className={`mb-4 mt-2 animate-spin md:mb-0`} />;
   }
 
   return (
-    <div className={`mt-2`}>
+    <div className={`mb-4 mt-2 md:mb-0`}>
       {user?.data?.name && (
         <Link href={`/profile/${user.data.id}`}>
           <Avatar>

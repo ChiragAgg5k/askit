@@ -3,7 +3,7 @@ import { Button } from "~/components/ui/button";
 import React from "react";
 
 export default function ContactButton({ email }: { email?: string | null }) {
-  const [buttonText, setButtonText] = React.useState("Contact User");
+  const [buttonText, setButtonText] = React.useState("Copy Email");
   return (
     <Button
       className={`mt-4 w-full`}

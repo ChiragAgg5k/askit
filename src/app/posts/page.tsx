@@ -51,10 +51,14 @@ export default function Posts() {
                       {post.description}
                     </p>
 
-                    <div className={`space-x-2`}>
+                    <div className={``}>
                       {post.categories.length > 0 ? (
                         post.categories.map((category, index) => (
-                          <Badge key={index} variant="outline">
+                          <Badge
+                            key={index}
+                            variant="outline"
+                            className={`mr-2`}
+                          >
                             {category}
                           </Badge>
                         ))
@@ -87,6 +91,15 @@ export default function Posts() {
           </div>
         )}
       </div>
+
+      {!hasNextPage && (
+        <div className={`flex items-center justify-center`}>
+          <p className={`pb-8 text-sm text-muted-foreground`}>
+            No more posts to show.
+          </p>
+        </div>
+      )}
+
       <span ref={ref} style={{ visibility: "hidden" }}>
         intersection observer
       </span>
