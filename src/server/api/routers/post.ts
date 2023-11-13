@@ -58,21 +58,35 @@ export const postRouter = createTRPCRouter({
       });
     }),
 
-  fetchAll: publicProcedure
+  fetchInfinte: publicProcedure
     .input(
       z.object({
-        skip: z.number().optional(),
-        take: z.number().optional(),
+        limit: z.number().min(1).max(100).nullish(),
+        cursor: z.string().nullish(),
       }),
     )
-    .query(({ ctx, input }) => {
-      return ctx.db.post.findMany({
+    .query(async ({ ctx, input }) => {
+      const limit = input.limit ?? 10;
+      const { cursor } = input;
+
+      const posts = await ctx.db.post.findMany({
+        take: limit + 1,
+        cursor: cursor ? { id: cursor } : undefined,
         orderBy: {
           createdAt: "desc",
         },
-        skip: input?.skip,
-        take: input?.take,
       });
+
+      let nextCursor: typeof cursor | undefined = undefined;
+      if (posts.length > limit) {
+        const nextItem = posts.pop();
+        nextCursor = nextItem!.id;
+      }
+
+      return {
+        posts,
+        nextCursor,
+      };
     }),
 
   fetch: publicProcedure

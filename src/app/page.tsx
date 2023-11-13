@@ -21,7 +21,7 @@ export default async function Home() {
         <p className={`text-sm text-muted-foreground`}>
           Just wanna answer questions?{" "}
           <Link
-            href={`/posts/allposts/0`}
+            href={`/posts/`}
             className={`ml-2 text-foreground hover:underline`}
           >
             View all questions here -&gt;

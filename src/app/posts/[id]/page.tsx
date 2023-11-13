@@ -123,7 +123,7 @@ export default async function PostPage({
         </div>
       </PageWrapper>
       <Link
-        href={`/posts/allposts/0`}
+        href={`/posts/`}
         className={`fixed bottom-0 p-4 text-sm text-muted-foreground`}
       >
         <Button variant={`secondary`}>Back to all posts</Button>
