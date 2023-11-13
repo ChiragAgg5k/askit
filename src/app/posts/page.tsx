@@ -7,7 +7,7 @@ import Link from "next/link";
 import { howLongAgo } from "~/lib/utils";
 import { Badge } from "~/components/ui/badge";
 import { useInView } from "react-intersection-observer";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Posts() {
   const { ref, inView } = useInView();
@@ -51,20 +51,27 @@ export default function Posts() {
                       {post.description}
                     </p>
 
-                    <div className={``}>
-                      {post.categories.length > 0 ? (
-                        post.categories.map((category, index) => (
+                    <div className={`flex items-center justify-between`}>
+                      <div>
+                        {post.categories.length > 0 ? (
+                          post.categories.map((category, index) => (
+                            <Badge
+                              key={index}
+                              variant="outline"
+                              className={`mr-2 hover:cursor-pointer hover:bg-primary hover:text-white`}
+                            >
+                              {category}
+                            </Badge>
+                          ))
+                        ) : (
                           <Badge
-                            key={index}
                             variant="outline"
-                            className={`mr-2`}
+                            className={`mr-2 hover:cursor-pointer hover:bg-primary hover:text-white`}
                           >
-                            {category}
+                            Uncategorized
                           </Badge>
-                        ))
-                      ) : (
-                        <></>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </div>
                 </Link>

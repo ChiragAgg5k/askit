@@ -46,12 +46,18 @@ export default function GPTAnswer({
 
   return (
     <div className={`mt-4 flex flex-col items-center justify-end`}>
-      <Button onClick={handleClick} disabled={gptResponse.isLoading}>
+      <Button
+        onClick={handleClick}
+        disabled={gptResponse.isLoading}
+        className={`group`}
+      >
         {answeredPosts.length > 0 ? "Analyze with AI" : "Answer with AI"}
         {gptResponse.isLoading ? (
           <Icons.spinner className={`ml-2 animate-spin`} />
         ) : (
-          <BsStars className={`ml-2`} />
+          <BsStars
+            className={`ml-2 transition-all ease-in-out group-hover:scale-125`}
+          />
         )}
       </Button>
       {gptResponse.data && (

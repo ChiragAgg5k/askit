@@ -2,6 +2,8 @@ import { getServerAuthSession } from "~/server/auth";
 import Link from "next/link";
 import { PageWrapper } from "~/components/page-transition-wrapper";
 import AskQuestion from "~/components/ask-question";
+import AnimatedTextWord from "~/components/animated-text-word";
+import ArrowLink from "~/components/arrow-animation";
 
 export default async function Home() {
   const session = await getServerAuthSession();
@@ -13,20 +15,17 @@ export default async function Home() {
           <h1 className="mb-2 flex items-center justify-center text-4xl font-bold">
             Askit
           </h1>
-          <h2 className="text-base">Got any questions? Just Askit!</h2>
+          <AnimatedTextWord text={`Got any questions? Just Askit.`} />
         </div>
         <div className={`flex w-full items-center justify-center px-4`}>
           <AskQuestion isSignedIn={session !== null} />
         </div>
-        <p className={`text-sm text-muted-foreground`}>
-          Just wanna answer questions?{" "}
-          <Link
-            href={`/posts/`}
-            className={`ml-2 text-foreground hover:underline`}
-          >
-            View all questions here -&gt;
-          </Link>
-        </p>
+        <div className={`flex items-center text-sm`}>
+          <p className={`text-muted-foreground`}>
+            Just wanna answer questions?{" "}
+          </p>
+          <ArrowLink />
+        </div>
       </main>
     </PageWrapper>
   );

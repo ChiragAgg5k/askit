@@ -11,6 +11,7 @@ import AnsAuthor from "~/app/posts/[id]/ans-author";
 import { BsStars } from "react-icons/bs";
 import Markdown from "react-markdown";
 import { howLongAgo } from "~/lib/utils";
+import Answer from "~/app/posts/[id]/ans";
 
 export default async function PostPage({
   params,
@@ -46,9 +47,9 @@ export default async function PostPage({
   return (
     <>
       <PageWrapper className={`pt-16`}>
-        <div className={`p-10`}>
+        <div className={`p-6 sm:p-8 md:p-10`}>
           <div
-            className={`flex flex-col items-end justify-center pb-2 md:flex-row md:items-center md:justify-start`}
+            className={`flex flex-col items-start justify-center pb-2 md:flex-row md:items-center md:justify-start`}
           >
             {user?.name && (
               <div className={`pb-2 pt-2 md:px-6  md:pb-0`}>
@@ -107,11 +108,7 @@ export default async function PostPage({
                     {answer.authorId !== null && (
                       <AnsAuthor authorId={answer.authorId} />
                     )}
-                    <Markdown
-                      className={`ml-4 text-base text-muted-foreground`}
-                    >
-                      {answer.description}
-                    </Markdown>
+                    <Answer answer={answer.description} />
                   </div>
                   <p
                     className={`whitespace-nowrap px-2 text-end text-sm text-muted-foreground`}
