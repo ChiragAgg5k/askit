@@ -1,5 +1,4 @@
 import { getServerAuthSession } from "~/server/auth";
-import Link from "next/link";
 import { PageWrapper } from "~/components/page-transition-wrapper";
 import AskQuestion from "~/components/ask-question";
 import AnimatedTextWord from "~/components/animated-text-word";
