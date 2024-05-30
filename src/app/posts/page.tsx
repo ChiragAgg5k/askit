@@ -42,8 +42,15 @@ export default function Posts() {
       element: ".top-element",
       on: "bottom",
     },
-    classes: "border rounded-xl text-sm p-4 mt-6 z-50 bg-background",
+    classes:
+      "border w-full max-w-2xl rounded-xl text-sm p-4 mt-6 z-50 bg-background",
     buttons: [
+      {
+        text: "Skip",
+        action: void tour.complete,
+        classes:
+          "px-4 py-2 mt-4 mr-2 bg-foreground/90 text-background rounded-lg hover:bg-neutral",
+      },
       {
         text: "Next",
         action: void tour.next,

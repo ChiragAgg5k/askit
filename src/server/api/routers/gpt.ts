@@ -17,7 +17,7 @@ export const gptRouter = createTRPCRouter({
       if (input.prompt === "") return undefined;
 
       const completion = await openai.completions.create({
-        model: "text-davinci-003",
+        model: "gpt-3.5-turbo-instruct",
         prompt: input.prompt,
         temperature: 0.7,
         top_p: 1,
